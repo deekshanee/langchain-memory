@@ -147,7 +147,7 @@ const chain = new ConversationChain({ llm: chat, memory });
 Create a `.env` file:
 ```bash
 # OpenAI Configuration
-OPENAI_API_KEY=your-openai-api-key-here
+OPENAI_API_KEY=your-api-key
 
 # Memory Storage Configuration
 MEMORY_STORAGE_TYPE=local
