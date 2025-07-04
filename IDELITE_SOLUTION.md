@@ -1,39 +1,39 @@
-# Idelite: AI-Powered Jira Story Enhancement with Persistent Memory
+# iDlite: A Visual Studio Code extension designed to enhance your coding experience by providing easy access to repositories, AI-driven code suggestions, and a convenient chat interface for a real-time assistance and integrated with Jira for a seamless workflow.
 
-## The Problem: Idelite's Memory Gap
+## The Problem: iDlite's Memory Gap
 
-### Current State of Idelite VS Code Extension
+### Current State of iDlite VS Code Extension
 
-**Idelite** is a VS Code extension that helps developers/business improve Jira stories / Dev issues and increase investment scores. However, it faces a critical limitation:
+**iDlite** is a VS Code extension that helps developers/businesses improve Jira stories / Dev issues and increase invest scores. However, it faces a critical limitation:
 
 #### ❌ **What's Broken Today**
 
-1. **No Context Memory**: Every time a developer opens a Jira story, Idelite starts from scratch
+1. **No Context Memory**: Every time a developer opens a Jira story, iDlite starts from scratch
 2. **Repetitive Explanations**: Developers must re-explain project context, requirements, and previous decisions
 3. **Inconsistent Suggestions**: AI can't reference past improvements or team preferences
-4. **Lost Investment Score History**: No tracking of how suggestions improved scores over time
-5. **Isolated Improvements**: Each story enhancement is independent, no learning from previous successes
-6. **NO Visual access to history**: User can not see the past conversation that is done before on screen and the scoring.
+4. **Lost Invest Score History**: No tracking of how suggestions improved scores over time
+5. **Isolated Improvements**: Each story enhancement is independent, with no learning from previous successes
+6. **NO Visual access to history**: The user can not see the past conversation that has been done before on screen, and the scoring.
 
 #### 📊 **Real Impact on Development Teams**
 
-- **% of time wasted** re-explaining project context to Idelite
+- **% of time wasted** re-explaining project context to iDlite
 - **Inconsistent story quality** due to lack of historical context
 - **Missed improvement patterns** from successful story enhancements
-- **No investment score tracking** across multiple story improvements
+- **No invest score tracking** across multiple story improvements
 - **Frustrated developers** who see the same suggestions repeatedly
 
 ---
 
-## Our Solution: Persistent Memory for Idelite
+## Our Solution: Persistent Memory for iDlite
 
-### 🧠 **The Memory Layer for Idelite**
+### 🧠 **The Memory Layer for iDlite**
 
-We've integrated persistent memory into Idelite that remembers everything:
+We've integrated persistent memory into iDlite, which remembers everything:
 
 ### 🎯 **The Key Point**
 
-**Idelite doesn't need to change their existing code!** They just:
+**iDlite doesn't need to change their existing code!** They just:
 
 1. **Add our memory utility** to their project
 2. **Bind it to their existing LLM** 
@@ -48,10 +48,10 @@ The memory system will:
 **No manual message saving required!**
 
 
-#### **Core Capabilities for Idelite**
+#### **Core Capabilities for iDlite**
 
 1. **Story Enhancement History**: Complete record of all Jira story improvements
-2. **Investment Score Tracking**: Historical data of score improvements over time
+2. **invest Score Tracking**: Historical data of score improvements over time
 3. **Project Context Memory**: Maintains project context across multiple stories
 4. **Team Preference Learning**: Learns from successful story enhancement patterns
 5. **Multi-Provider AI Support**: Works with OpenAI, Azure, Bedrock for story enhancement
@@ -66,7 +66,7 @@ Think of our solution like a **smart filing cabinet** that remembers everything:
 
 #### **Pattern 1: Session-Based Memory**
 **What it means**: Each Jira story gets its own "folder" in the memory system
-**Why it matters**: Just like you organize files by project, we organize AI conversations by story
+**Why it matters**: Just like you organise files by project, we organise AI conversations by story
 **Business benefit**: Easy to find and reference specific story enhancements
 
 **Our Generic Code Implementation**:
@@ -78,13 +78,13 @@ await memoryManager.saveAssistantMessage('Any assistant response');
 const history = await memoryManager.getSessionHistory(sessionId);
 ```
 
-**How Idelite Would Use It**:
+**How iDlite Would Use It**:
 ```typescript
-// Idelite would create sessions for each Jira story
+// iDlite would create sessions for each Jira story
 const storySessionId = `jira-${storyId}`;
 memoryManager.startSession(storySessionId, `Story: ${storyTitle}`);
 
-// Idelite would save story-specific conversations
+// iDlite would save story-specific conversations
 await memoryManager.saveUserMessage(`Original Story: ${storyContent}`);
 await memoryManager.saveAssistantMessage(`Enhanced Story: ${enhancedContent}`);
 ```
@@ -108,9 +108,9 @@ const systemMessages = await memoryManager.searchMessages({
 });
 ```
 
-**How Idelite Would Use It**:
+**How iDlite Would Use It**:
 ```typescript
-// Idelite would save project context as system messages
+// iDlite would save project context as system messages
 await memoryManager.saveSystemMessage(`
   Project Context:
   - Architecture: React + Node.js + PostgreSQL
@@ -118,7 +118,7 @@ await memoryManager.saveSystemMessage(`
   - Team Preferences: Functional components, TypeScript
 `);
 
-// Idelite would retrieve context for story enhancement
+// iDlite would retrieve context for story enhancement
 const projectContext = await memoryManager.searchMessages({
   role: 'system',
   limit: 10
@@ -144,9 +144,9 @@ const patterns = await memoryManager.searchMessages({
 });
 ```
 
-**How Idelite Would Use It**:
+**How iDlite Would Use It**:
 ```typescript
-// Idelite would track successful enhancement patterns
+// iDlite would track successful enhancement patterns
 async function trackSuccessfulPattern(storyId: string, originalScore: number, newScore: number) {
   const improvement = newScore - originalScore;
   
@@ -175,15 +175,15 @@ const dynamoMemory = createDynamoDBMemoryManager('table', 'region');
 const envMemory = createMemoryManagerFromEnv();
 ```
 
-**How Idelite Would Use It**:
+**How iDlite Would Use It**:
 ```typescript
-// Idelite would choose storage based on team size
-const localMemory = createLocalMemoryManager('./idelite-memory.json'); // Individual
-const teamMemory = createS3MemoryManager('idelite-team-bucket', 'us-east-1'); // Team
-const enterpriseMemory = createDynamoDBMemoryManager('idelite-enterprise', 'us-east-1'); // Enterprise
+// iDlite would choose storage based on team size
+const localMemory = createLocalMemoryManager('./iDlite-memory.json'); // Individual
+const teamMemory = createS3MemoryManager('iDlite-team-bucket', 'us-east-1'); // Team
+const enterpriseMemory = createDynamoDBMemoryManager('iDlite-enterprise', 'us-east-1'); // Enterprise
 ```
 
-### 🔧 **What Our Code Actually Provides**
+### 🔧 **What Our Code Provides**
 
 Our memory utility is a **generic, reusable component** that provides:
 
@@ -193,13 +193,13 @@ Our memory utility is a **generic, reusable component** that provides:
 4. **Multiple Storage Backends**: Local files, S3, DynamoDB
 5. **LangChain Integration**: Compatible with any LangChain application
 
-### 🎯 **How Idelite Would Integrate**
+### 🎯 **How iDlite Would Integrate**
 
-Idelite would use our memory utility as a **building block** that automatically works with their existing LangChain setup:
+iDlite would use our memory utility as a **building block** that automatically works with their existing LangChain setup:
 
 ```typescript
-// Idelite's current setup (without memory)
-class IdeliteExtension {
+// iDlite's current setup (without memory)
+class iDliteExtension {
   private llm: ChatOpenAI;
   
   async enhanceStory(storyContent: string) {
@@ -210,14 +210,14 @@ class IdeliteExtension {
   }
 }
 
-// Idelite's setup WITH our memory (automatic integration)
-class IdeliteExtension {
+// iDlite's setup WITH our memory (automatic integration)
+class iDliteExtension {
   private llm: ChatOpenAI;
   private memoryManager: MemoryManager;
   
   async initialize() {
     // Use our generic memory utility
-    this.memoryManager = createLocalMemoryManager('./idelite-memory.json');
+    this.memoryManager = createLocalMemoryManager('./iDlite-memory.json');
     await this.memoryManager.initialize();
     
     // Create LangChain memory that automatically saves conversations
@@ -385,7 +385,7 @@ const enhancedResponse = await llm.invoke([
 ### 🎯 **Feature 1: Smart Story Enhancement**
 
 #### **What it does**
-When you open a Jira story, Idelite doesn't start from scratch. Instead, it:
+When you open a Jira story, iDlite doesn't start from scratch. Instead, it:
 - Remembers how you've enhanced similar stories before
 - Recalls your project's architecture and coding standards
 - Knows what worked well in previous story improvements
@@ -403,10 +403,10 @@ Imagine you have a personal assistant who:
 - **Better Quality**: Consistent with your team's standards
 - **Higher Scores**: Uses proven patterns that work
 
-### 🎯 **Feature 2: Investment Score Tracking**
+### 🎯 **Feature 2: invest Score Tracking**
 
 #### **What it does**
-Idelite tracks how each enhancement affects your investment scores:
+iDlite tracks how each enhancement affects your invest scores:
 - Records the original score before enhancement
 - Tracks the new score after enhancement
 - Identifies which types of improvements work best
@@ -420,7 +420,7 @@ Idelite tracks how each enhancement affects your investment scores:
 ### 🎯 **Feature 3: Project Context Memory**
 
 #### **What it does**
-Idelite maintains a "project memory" that includes:
+iDlite maintains a "project memory" that includes:
 - Your project's architecture and technology stack
 - Team coding standards and preferences
 - Previous decisions and their rationale
@@ -441,7 +441,7 @@ Like a project manager who:
 ### 🎯 **Feature 4: Team Learning & Collaboration**
 
 #### **What it does**
-Idelite learns from the entire team's experience:
+iDlite learns from the entire team's experience:
 - Shares successful enhancement patterns across team members
 - Maintains consistency in story quality
 - Preserves team knowledge and expertise
@@ -462,7 +462,7 @@ Like a team knowledge base that:
 ### 🎯 **Feature 5: Multi-AI Provider Support**
 
 #### **What it does**
-Idelite can work with different AI providers:
+iDlite can work with different AI providers:
 - OpenAI (ChatGPT's technology)
 - Azure OpenAI (Microsoft's AI)
 - AWS Bedrock (Amazon's AI)
@@ -484,31 +484,31 @@ Like having multiple expert consultants available:
 
 ---
 
-## How Persistent Memory Solves Idelite's Problems
+## How Persistent Memory Solves iDlite's Problems
 
 ### 🎯 **Problem 1: No Context Memory**
 
-#### **Before (Current Idelite)**
+#### **Before (Current iDlite)**
 ```
-Developer opens Jira story → Idelite starts fresh → Generic suggestions
+Developer opens Jira story → iDlite starts fresh → Generic suggestions
 ```
 
 #### **After (With Persistent Memory)**
 ```
-Developer opens Jira story → Idelite recalls project context → Contextual suggestions
+Developer opens Jira story → iDlite recalls project context → Contextual suggestions
 ```
 
 **Solution**: Memory system maintains project context across all Jira stories in the same project.
 
 ### 🎯 **Problem 2: Repetitive Explanations**
 
-#### **Before (Current Idelite)**
+#### **Before (Current iDlite)**
 - Developer explains project architecture for each story
 - Re-explains team coding standards
 - Re-explains previous decisions and constraints
 
 #### **After (With Persistent Memory)**
-- Idelite remembers project architecture from previous stories
+- iDlite remembers project architecture from previous stories
 - Recalls team coding standards and preferences
 - References previous decisions automatically
 
@@ -516,7 +516,7 @@ Developer opens Jira story → Idelite recalls project context → Contextual su
 
 ### 🎯 **Problem 3: Inconsistent Suggestions**
 
-#### **Before (Current Idelite)**
+#### **Before (Current iDlite)**
 - Each story gets independent, potentially conflicting suggestions
 - No consistency in terminology or approach
 - Misses successful patterns from previous stories
@@ -528,9 +528,9 @@ Developer opens Jira story → Idelite recalls project context → Contextual su
 
 **Solution**: Memory system ensures consistency across all story enhancements.
 
-### 🎯 **Problem 4: No Investment Score Tracking**
+### 🎯 **Problem 4: No invest Score Tracking**
 
-#### **Before (Current Idelite)**
+#### **Before (Current iDlite)**
 - No historical data on score improvements
 - Can't identify which suggestions work best
 - No learning from successful enhancements
@@ -540,17 +540,17 @@ Developer opens Jira story → Idelite recalls project context → Contextual su
 - Identifies patterns in successful enhancements
 - Learns and improves over time
 
-**Solution**: Tracks and analyzes investment score improvements across all stories.
+**Solution**: Tracks and analyzes invest score improvements across all stories.
 
 ---
 
-## Technical Implementation for Idelite
+## Technical Implementation for iDlite
 
 ### 🏗️ **Architecture Integration**
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   VS Code       │    │   Idelite       │    │  Memory Layer   │
+│   VS Code       │    │   iDlite       │    │  Memory Layer   │
 │   Extension     │◄──►│   Extension     │◄──►│  (Our Solution) │
 │                 │    │                 │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
@@ -562,72 +562,72 @@ Developer opens Jira story → Idelite recalls project context → Contextual su
                        └─────────────────┘
 ```
 
-### 🔧 **Key Features for Idelite**
+### 🔧 **Key Features for iDlite**
 
 1. **Story Session Management**: Organize conversations by Jira story ID
 2. **Project Context Retrieval**: Find relevant project history instantly
-3. **Investment Score Analytics**: Track improvements over time
+3. **invest Score Analytics**: Track improvements over time
 4. **Team Learning**: Share successful patterns across team
 5. **Multi-AI Provider Support**: Use different AI providers for different story types
 
-## Business Benefits for Idelite Users
+## Business Benefits for iDlite Users
 
 ### 🚀 **Immediate Impact**
 
 #### **For Developers**
 - **50% Faster Story Enhancement**: No need to re-explain context
 - **Higher Quality Stories**: Consistent, contextual improvements
-- **Better Investment Scores**: Learn from successful patterns
+- **Better invest Scores**: Learn from successful patterns
 - **Reduced Frustration**: AI remembers project specifics
 
 #### **For Project Managers**
 - **Complete Enhancement History**: See all story improvements
-- **Investment Score Tracking**: Monitor score improvements over time
+- **invest Score Tracking**: Monitor score improvements over time
 - **Quality Assurance**: Track AI suggestions and their impact
 - **Team Knowledge**: Preserve successful enhancement patterns
 
 #### **For Business Stakeholders**
-- **Higher Investment Scores**: Better story quality leads to better scores
+- **Higher invest Scores**: Better story quality leads to better scores
 - **Faster Story Completion**: Reduced time spent on story enhancement
 - **Consistent Quality**: Standardized story enhancement across team
 - **Competitive Advantage**: Better project planning and estimation
 
 
 
-## Use Cases for Idelite with Persistent Memory
+## Use Cases for iDlite with Persistent Memory
 
 ### 🎯 **Use Case 1: New Developer Joins Project**
 
 **Before**: New developer struggles to understand project context, gets generic suggestions.
 
-**After**: Idelite immediately provides project-specific suggestions based on team's enhancement history.
+**After**: iDlite immediately provides project-specific suggestions based on team's enhancement history.
 
 **Business Impact**: 70% faster onboarding, consistent story quality from day one.
 
 ### 🎯 **Use Case 2: Complex Story Enhancement**
 
-**Before**: Developer spends 20 minutes explaining complex requirements to Idelite.
+**Before**: Developer spends 20 minutes explaining complex requirements to iDlite.
 
-**After**: Idelite recalls similar complex stories and their successful enhancements.
+**After**: iDlite recalls similar complex stories and their successful enhancements.
 
 **Business Impact**: 75% faster enhancement, higher quality results.
 
-### 🎯 **Use Case 3: Investment Score Optimization**
+### 🎯 **Use Case 3: invest Score Optimization**
 
 **Before**: No tracking of which enhancements improve scores most.
 
-**After**: Idelite learns from successful score improvements and applies proven patterns.
+**After**: iDlite learns from successful score improvements and applies proven patterns.
 
-**Business Impact**: 100% improvement in investment scores, data-driven enhancements.
+**Business Impact**: 100% improvement in invest scores, data-driven enhancements.
 
 ---
 
 
 ## Conclusion
 
-### 🎯 **The Bottom Line for Idelite**
+### 🎯 **The Bottom Line for iDlite**
 
-Our persistent memory solution transforms Idelite from a basic story enhancement tool into an intelligent, context-aware assistant that learns and improves over time.
+Our persistent memory solution transforms iDlite from a basic story enhancement tool into an intelligent, context-aware assistant that learns and improves over time.
 
 #### **For Developers**: 
 - Enhance stories faster with better quality
@@ -637,23 +637,23 @@ Our persistent memory solution transforms Idelite from a basic story enhancement
 #### **For Teams**: 
 - Share successful enhancement patterns
 - Maintain consistency across all stories
-- Track and improve investment scores
+- Track and improve invest scores
 
 #### **For Business**: 
-- Higher investment scores
+- Higher invest scores
 - Faster story completion
 - Better project planning
 - Competitive advantage
 
 
 
-## Technical Specifications for Idelite
+## Technical Specifications for iDlite
 
 ### 📋 **Integration Details**
 - **Extension**: VS Code extension integration
 - **Storage**: Local files, AWS S3, DynamoDB
 - **AI Providers**: OpenAI, Azure, Bedrock, Google AI
-- **Data**: Jira story content, enhancement history, investment scores
+- **Data**: Jira story content, enhancement history, invest scores
 - **Security**: Encrypted storage, access controls
 
 
